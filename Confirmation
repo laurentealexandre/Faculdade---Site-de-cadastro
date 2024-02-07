@@ -1,0 +1,56 @@
+<!--informações não visiveis na página-->
+<DOCTYPE html>
+<html lang="pt-br>
+<head>
+<title> Confirmação </title>
+<meta charset="utf-8">
+<link href="style.css" type="text/css" rel="stylesheet" />
+
+</head>
+<body>
+	<!--cabeçalho-->
+	<header>
+	<h1>Alexandre Laurente Cardoso</h1>
+	<p>GRPSP498 - Desenvolvimento Front-End II - 2023_2 - EAD</p>
+                <a href="index.html">Home</a>
+                <a href="form.html">Formulário</a>
+                <a href="confirmation.html">Confirmação</a>		
+	</header>
+
+  <body>
+
+    <div class="container">
+      <h2>Confirmação de Dados</h2>
+      <div id="dados-confirmacao">
+        <!-- Dados do formulário serão inseridos aqui pelo JavaScript -->
+      </div>
+      <button id="confirmar" class="btn btn-success">Baixar Confirmação e Voltar</button>
+    </div>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        var dadosForm = JSON.parse(localStorage.getItem('dadosForm'));
+        if (dadosForm) {
+            document.getElementById('dados-confirmacao').innerHTML = 
+            'Nome: ' + dadosForm.nome + '<br>' +
+            'Sobrenome: ' + dadosForm.sobrenome + '<br>' +
+            'Email: ' + dadosForm.email + '<br>' +
+            'Idade: ' + dadosForm.idade;
+        }
+      });
+    </script>
+  
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.7.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Referência para o seu arquivo JavaScript -->
+    <script src="script.js"></script>
+  
+  </body>
+<!--Rodape da página-->
+<footer>
+        <p>Desenvolvido por Alexandre Laurente Cardoso</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!--informações não visiveis na página-->
+<DOCTYPE html>
+        <html lang="pt-br>
+<head>
+        <title>Formulário de Registro</title>
+
+        <!-- Bootstrap CSS -->
+        <link rel=" stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <!-- arquivo css -->
+        <link rel="stylesheet" href="style.css">
+
+        <style>
+                .container {
+                        padding-top: 20px;
+                }
+
+                .form-group {
+                        margin-top: 15px;
+                }
+        </style>
+        </head>
+
+        <body>
+                <!--cabeçalho-->
+                <header>
+                        <h1>Alexandre Laurente Cardoso</h1>
+                        <p>GRPSP498 - Desenvolvimento Front-End II - 2023_2 - EAD</p>
+                        <a href="index.html">Home</a>
+                        <a href="form.html">Formulário</a>
+                        <a href="confirmation.html">Confirmação</a>
+                </header>
+
+                <!--formulario de contato-->
+                <body>
+
+                <div class="container">
+                        <h2>Formulário de Registro</h2>
+                        <form id="registro">
+                                <div class="form-group">
+                                        <label for="nome">Nome:</label>
+                                        <input type="text" class="form-control" id="nome" placeholder="Digite seu nome"
+                                                required>
+                                </div>
+                                <div class="form-group">
+                                        <label for="sobrenome">Sobrenome:</label>
+                                        <input type="text" class="form-control" id="sobrenome"
+                                                placeholder="Digite seu sobrenome" required>
+                                </div>
+                                <div class="form-group">
+                                        <label for="email">E-mail:</label>
+                                        <input type="email" class="form-control" id="email"
+                                                placeholder="Digite seu e-mail" required>
+                                </div>
+                                <div class="form-group">
+                                        <label for="idade">Idade:</label>
+                                        <input type="number" class="form-control" id="idade"
+                                                placeholder="Digite sua idade" required>
+                                </div>
+                                <button type="submit" id="btn" class="btn btn-primary">Enviar</button>
+                        </form>
+                </div>
+
+
+                <!-- Bootstrap JS, Popper.js, and jQuery -->
+                <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.7.0/dist/umd/popper.min.js"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+                <script src="script.js"></script>
+
+
+                <!--Rodape da página-->
+                <footer>
+                        <p>Desenvolvido por Alexandre Laurente Cardoso</p>
+                </footer>
+
+                <body>
+
+        </html>
