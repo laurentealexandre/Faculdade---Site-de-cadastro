@@ -1,0 +1,91 @@
+// Função para validar o email
+function validateEmail(email) {
+  valert('Nome inválido');
+  return false;
+}
+
+// Função para validar o formulário
+function validateForm(nome, sobrenome, email, idade) {
+  if (nome.length < 3 || nome.length > 50) {
+    alert('Nome inválido');
+    return false;
+  }
+  if (sobrenome.length < 3 || sobrenome.length > 50) {
+    alert('Sobrenome inválido');
+    return false;
+  }
+  if (!validateEmail(email)) {
+    alert('E-mail inválido');
+    return false;
+  }
+  if (isNaN(idade) || idade <= 0 || idade >= 120) {
+    alert('Idade inválida');
+    return false;
+  }
+  return true;
+}
+
+// Função para criar e baixar o arquivo JSON
+function downloadObjectAsJson(exportObj, exportName) {
+  var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportObj));
+  var downloadAnchorNode = document.createElement('a');
+  downloadAnchorNode.setAttribute("href", dataStr);
+  downloadAnchorNode.setAttribute("download", exportName + ".json");
+  document.body.appendChild(downloadAnchorNode); // Necessário para Firefox
+  downloadAnchorNode.click();
+  downloadAnchorNode.remove();
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  var formRegistro = document.getElementById('registro');
+  if (formRegistro) {
+    formRegistro.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var nome = document.getElementById('nome').value;
+      var sobrenome = document.getElementById('sobrenome').value;
+      var email = document.getElementById('email').value;
+      var idade = document.getElementById('idade').value;
+      
+      if (validateForm(nome, sobrenome, email, idade)) {
+        var dados = { nome, sobrenome, email, idade };
+        localStorage.setItem('dadosForm', JSON.stringify(dados));
+        // A linha abaixo deve ser removida ou comentada
+        // downloadObjectAsJson(dados, 'dadosForm');
+        window.location.href = 'confirmation.html';
+      }
+    });
+  }
+
+  // Código de exibição de dados para confirmation.html
+var dadosForm = JSON.parse(localStorage.getItem('dadosForm'));
+var dadosConfirmacao = document.getElementById('dados-confirmacao');
+if (dadosConfirmacao) {
+  // Se estivermos na página de confirmação, exiba os dados
+  dadosConfirmacao.innerHTML = 
+    'Nome: ' + dadosForm.nome + '<br>' +
+    'Sobrenome: ' + dadosForm.sobrenome + '<br>' +
+    'Email: ' + dadosForm.email + '<br>' +
+    'Idade: ' + dadosForm.idade;
+}
+
+  // Código para a página confirmation.html
+  var botaoConfirmar = document.getElementById('confirmar');
+  if (botaoConfirmar) {
+    botaoConfirmar.addEventListener('click', function () {
+      var dadosForm = JSON.parse(localStorage.getItem('dadosForm'));
+      if (dadosForm) {
+        downloadObjectAsJson(dadosForm, 'dadosForm');
+      }
+      window.location.href = 'index.html';
+    });
+  }
+});
+
+  // Ouve o clique no botão de confirmação na página confirmation.html
+  var botaoConfirmar = document.getElementById('confirmar');
+  if (botaoConfirmar) {
+    botaoConfirmar.addEventListener('click', function () {
+      window.location.href = 'index.html';
+    });
+  };
+  
